@@ -6,7 +6,7 @@
     {
       "inputs": [
         {
-          "internalType": "contract IUniswapV3Pool",
+          "internalType": "contract IPegasysV3Pool",
           "name": "pool",
           "type": "address"
         },

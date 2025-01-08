@@ -29,7 +29,7 @@
       "name": "verifyCallback",
       "outputs": [
         {
-          "internalType": "contract IUniswapV3Pool",
+          "internalType": "contract IPegasysV3Pool",
           "name": "pool",
           "type": "address"
         }

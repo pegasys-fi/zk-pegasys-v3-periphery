@@ -32,8 +32,8 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS, async (_, { config }, runSuper) 
 export default {
   networks: {
     zkSyncTestNode: {
-      url: 'http://localhost:8011',
-      ethNetwork: '',
+      url: "http://localhost:8011",
+      ethNetwork: "http://localhost:8545",
       zksync: true,
     },
     zkSyncTestnet: {

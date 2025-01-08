@@ -1,4 +1,4 @@
-import { bytecode } from '@uniswap/v3-core/artifacts-zk/contracts/UniswapV3Pool.sol/UniswapV3Pool.json'
+import { bytecode } from '@pegasys/v3-core/artifacts-zk/contracts/PegasysV3Pool.sol/PegasysV3Pool.json'
 import { utils } from 'ethers'
 import { utils as zkUtils } from 'zksync-web3'
 

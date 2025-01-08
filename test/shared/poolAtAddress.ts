@@ -1,7 +1,7 @@
-import { abi as POOL_ABI } from '@uniswap/v3-core/artifacts-zk/contracts/UniswapV3Pool.sol/UniswapV3Pool.json'
+import { abi as POOL_ABI } from '@pegasys/v3-core/artifacts-zk/contracts/PegasysV3Pool.sol/PegasysV3Pool.json'
 import { Contract, Wallet } from 'ethers'
-import { IUniswapV3Pool } from '../../typechain'
+import { IPegasysV3Pool } from '../../typechain'
 
-export default function poolAtAddress(address: string, wallet: Wallet): IUniswapV3Pool {
-  return new Contract(address, POOL_ABI, wallet) as IUniswapV3Pool
+export default function poolAtAddress(address: string, wallet: Wallet): IPegasysV3Pool {
+  return new Contract(address, POOL_ABI, wallet) as IPegasysV3Pool
 }
