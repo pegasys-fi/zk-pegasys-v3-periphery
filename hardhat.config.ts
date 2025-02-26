@@ -36,17 +36,11 @@ export default {
       ethNetwork: "http://localhost:8545",
       zksync: true,
     },
-    zkSyncTestnet: {
-      url: 'https://testnet.era.zksync.dev',
-      ethNetwork: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
+    zkSysTestnet: {
+      url: 'https://rpc-test-zk.syscoin.org',
+      ethNetwork: `https://rpc-tanenbaum.rollux.com`,
       zksync: true,
       verifyURL: 'https://zksync2-testnet-explorer.zksync.dev/contract_verification',
-    },
-    zkSyncMainnet: {
-      url: 'https://mainnet.era.zksync.io',
-      ethNetwork: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      zksync: true,
-      verifyURL: 'https://zksync2-mainnet-explorer.zksync.io/contract_verification',
     },
   },
   defaultNetwork: 'zkSyncTestNode',
