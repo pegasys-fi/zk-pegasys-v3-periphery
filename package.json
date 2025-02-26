@@ -1,5 +1,5 @@
 {
-  "name": "era-uniswap-v3-periphery",
+  "name": "zk-pegasys-v3-periphery",
   "description": "🎚 Peripheral smart contracts for interacting with Pegasys V3 forked for zkSync Era",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
@@ -7,13 +7,13 @@
   },
   "version": "1.1.1",
   "keywords": [
-    "uniswap",
+    "pegasys",
     "periphery",
     "v3"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/uniswap-zksync/era-uniswap-v3-periphery"
+    "url": "https://github.com/pegasys-fi/zk-pegasys-v3-periphery"
   },
   "files": [
     "contracts/base",
