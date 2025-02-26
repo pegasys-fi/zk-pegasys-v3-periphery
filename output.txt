@@ -1,0 +1,636 @@
+yarn run v1.22.17
+$ hardhat test
+
+
+Compiling 1 Solidity file
+Compiling 113 Solidity files
+Compiling 1 Solidity file
+Compiling 1 Solidity file
+Compiling 2 Solidity files
+Compiling 1 Solidity file
+Successfully compiled 119 Solidity files
+Creating Typechain artifacts in directory typechain for target ethers-v5
+Successfully generated Typechain artifacts!
+
+
+  Base64
+    #encode
+      ✔ is correct for empty bytes
+      ✔ works for "test string"
+      ✔ gas cost of encode(test string)
+      ✔ works for "this is a test"
+      ✔ gas cost of encode(this is a test)
+      ✔ works for "alphabet soup"
+      ✔ gas cost of encode(alphabet soup)
+      ✔ works for "aLpHaBeT"
+      ✔ gas cost of encode(aLpHaBeT)
+      ✔ works for "includes
+newlines"
+      ✔ gas cost of encode(includes
+newlines)
+      ✔ works for "<some html>"
+      ✔ gas cost of encode(<some html>)
+      ✔ works for "😀"
+      ✔ gas cost of encode(😀)
+      ✔ works for "f"
+      ✔ gas cost of encode(f)
+      ✔ works for "fo"
+      ✔ gas cost of encode(fo)
+      ✔ works for "foo"
+      ✔ gas cost of encode(foo)
+      ✔ works for "foob"
+      ✔ gas cost of encode(foob)
+      ✔ works for "fooba"
+      ✔ gas cost of encode(fooba)
+      ✔ works for "foobar"
+      ✔ gas cost of encode(foobar)
+      ✔ works for "this is a very long string that should cost a lot of gas to encode :)"
+      ✔ gas cost of encode(this is a very long string that should cost a lot of gas to encode :))
+      ✔ tiny fuzzing (149ms)
+      max size string (24kB)
+        ✔ correctness (135ms)
+        ✔ gas cost (109ms)
+
+  CallbackValidation
+Compiling 118 Solidity files
+Compiling 1 Solidity file
+Compiling 2 Solidity files
+Compiling 1 Solidity file
+Compiling 1 Solidity file
+Successfully compiled 123 Solidity files
+Creating Typechain artifacts in directory typechain for target ethers-v5
+Successfully generated Typechain artifacts!
+    ✔ reverts when called from an address other than the associated PegasysV3Pool
+
+  LiquidityAmounts
+    #getLiquidityForAmount0
+      ✔ gas
+    #getLiquidityForAmount1
+      ✔ gas
+    #getLiquidityForAmounts
+      ✔ amounts for price inside
+      ✔ amounts for price below
+      ✔ amounts for price above
+      ✔ amounts for price equal to lower boundary
+      ✔ amounts for price equal to upper boundary
+      ✔ gas for price below
+      ✔ gas for price above
+      ✔ gas for price inside
+    #getAmount0ForLiquidity
+      ✔ gas
+    #getLiquidityForAmount1
+      ✔ gas
+    #getAmountsForLiquidity
+      ✔ amounts for price inside
+      ✔ amounts for price below
+      ✔ amounts for price above
+      ✔ amounts for price on lower boundary
+      ✔ amounts for price on upper boundary
+      ✔ gas for price below
+      ✔ gas for price above
+      ✔ gas for price inside
+
+  Multicall
+    ✔ revert messages are returned
+    ✔ return data is properly encoded
+    ✔ gas cost of pay w/o multicall (86ms)
+    ✔ gas cost of pay w/ multicall (43ms)
+    context is preserved
+      ✔ msg.value (54ms)
+      ✔ msg.value used twice (49ms)
+      ✔ msg.sender
+
+  NFTDescriptor
+    #constructTokenURI
+      ✔ returns the valid JSON string with min and max ticks (45ms)
+      ✔ returns the valid JSON string with mid ticks (43ms)
+      ✔ returns valid JSON when token symbols contain quotes (44ms)
+      ✔ gas (39ms)
+      ✔ snapshot matches (46ms)
+      when the token ratio is flipped
+        ✔ returns the valid JSON for mid ticks (44ms)
+        ✔ returns the valid JSON for min/max ticks (43ms)
+    #addressToString
+      ✔ returns the correct string for a given address
+    #tickToDecimalString
+      when tickspacing is 10
+        ✔ returns MIN on lowest tick
+        ✔ returns MAX on the highest tick
+        ✔ returns the correct decimal string when the tick is in range
+        ✔ returns the correct decimal string when tick is mintick for different tickspace
+      when tickspacing is 60
+        ✔ returns MIN on lowest tick
+        ✔ returns MAX on the highest tick
+        ✔ returns the correct decimal string when the tick is in range
+        ✔ returns the correct decimal string when tick is mintick for different tickspace
+      when tickspacing is 200
+        ✔ returns MIN on lowest tick
+        ✔ returns MAX on the highest tick
+        ✔ returns the correct decimal string when the tick is in range
+        ✔ returns the correct decimal string when tick is mintick for different tickspace
+      when token ratio is flipped
+        ✔ returns the inverse of default ratio for medium sized numbers
+        ✔ returns the inverse of default ratio for large numbers
+        ✔ returns the inverse of default ratio for small numbers
+        ✔ returns the correct string with differing token decimals
+        ✔ returns MIN for highest tick
+        ✔ returns MAX for lowest tick
+    #fixedPointToDecimalString
+      returns the correct string for
+        ✔ the highest possible price
+        ✔ large numbers
+        ✔ exactly 5 sigfig whole number
+        ✔ when the decimal is at index 4
+        ✔ when the decimal is at index 3
+        ✔ when the decimal is at index 2
+        ✔ when the decimal is at index 1
+        ✔ when sigfigs have trailing 0s after the decimal
+        ✔ when there are exactly 5 numbers after the decimal
+        ✔ very small numbers
+        ✔ smallest number
+      when tokens have different decimal precision
+        ✔ some fuzz (65ms)
+        when baseToken has more precision decimals than quoteToken
+          ✔ returns the correct string when the decimal difference is even
+          ✔ returns the correct string when the decimal difference is odd
+          ✔ does not account for higher token0 precision if difference is more than 18
+        when quoteToken has more precision decimals than baseToken
+          ✔ returns the correct string when the decimal difference is even
+          ✔ returns the correct string when the decimal difference is odd
+          - returns the correct string when the decimal difference brings ratio below the minimum
+          ✔ does not account for higher token1 precision if difference is more than 18
+    #feeToPercentString
+      ✔ returns the correct fee for 0
+      ✔ returns the correct fee for 1
+      ✔ returns the correct fee for 30
+      ✔ returns the correct fee for 33
+      ✔ returns the correct fee for 500
+      ✔ returns the correct fee for 2500
+      ✔ returns the correct fee for 3000
+      ✔ returns the correct fee for 10000
+      ✔ returns the correct fee for 17000
+      ✔ returns the correct fee for 100000
+      ✔ returns the correct fee for 150000
+      ✔ returns the correct fee for 102000
+      ✔ returns the correct fee for 10000000
+      ✔ returns the correct fee for 1005000
+      ✔ returns the correct fee for 10000000
+      ✔ returns the correct fee for 12300000
+    #tokenToColorHex
+      ✔ returns the correct hash for the first 3 bytes of the token address
+      ✔ returns the correct hash for the last 3 bytes of the address
+    #rangeLocation
+      ✔ returns the correct coordinates when range midpoint under -125_000
+      ✔ returns the correct coordinates when range midpoint is between -125_000 and -75_000
+      ✔ returns the correct coordinates when range midpoint is between -75_000 and -25_000
+      ✔ returns the correct coordinates when range midpoint is between -25_000 and -5_000
+      ✔ returns the correct coordinates when range midpoint is between -5_000 and 0
+      ✔ returns the correct coordinates when range midpoint is between 0 and 5_000
+      ✔ returns the correct coordinates when range midpoint is between 5_000 and 25_000
+      ✔ returns the correct coordinates when range midpoint is between 25_000 and 75_000
+      ✔ returns the correct coordinates when range midpoint is between 75_000 and 125_000
+      ✔ returns the correct coordinates when range midpoint is above 125_000
+      ✔ math does not overflow on max value
+    #svgImage
+      ✔ matches the current snapshot
+      ✔ returns a valid SVG
+    #isRare
+      ✔ returns true sometimes
+      ✔ returns false sometimes
+
+  NonfungiblePositionManager
+    ✔ bytecode size
+    #createAndInitializePoolIfNecessary
+      ✔ creates the pool at the expected address (88ms)
+      ✔ is payable (72ms)
+      ✔ works if pool is created but not initialized (158ms)
+      ✔ works if pool is created and initialized (233ms)
+      ✔ could theoretically use eth via multicall (83ms)
+      ✔ gas (70ms)
+    #mint
+      ✔ fails if pool does not exist
+      ✔ fails if cannot transfer (178ms)
+      ✔ creates a token (179ms)
+      - can use eth via multicall
+      - emits an event
+      ✔ gas first mint for pool (154ms)
+      ✔ gas first mint for pool using eth with zero refund (169ms)
+      ✔ gas first mint for pool using eth with non-zero refund (155ms)
+      ✔ gas mint on same ticks (261ms)
+      ✔ gas mint for same pool, different ticks (244ms)
+    #increaseLiquidity
+      ✔ increases position liquidity (77ms)
+      - emits an event
+      ✔ can be paid with ETH (245ms)
+      ✔ gas (80ms)
+    #decreaseLiquidity
+      - emits an event
+      ✔ fails if past deadline (89ms)
+      ✔ cannot be called by other addresses
+      ✔ decreases position liquidity (61ms)
+      ✔ is payable (72ms)
+      ✔ accounts for tokens owed (75ms)
+      ✔ can decrease for all the liquidity (119ms)
+      ✔ cannot decrease for more than all the liquidity
+      ✔ cannot decrease for more than the liquidity of the nft position (114ms)
+      ✔ gas partial decrease (56ms)
+      ✔ gas complete decrease (61ms)
+    #collect
+      - emits an event
+      ✔ cannot be called by other addresses
+      ✔ cannot be called with 0 for both amounts (55ms)
+      ✔ no op if no tokens are owed (85ms)
+      ✔ transfers tokens owed from burn (334ms)
+      ✔ gas transfers both (271ms)
+      ✔ gas transfers token0 only (153ms)
+      ✔ gas transfers token1 only (123ms)
+    #burn
+      - emits an event
+      ✔ cannot be called by other addresses (48ms)
+      ✔ cannot be called while there is still liquidity
+      ✔ cannot be called while there is still partial liquidity (94ms)
+      ✔ cannot be called while there is still tokens owed (111ms)
+      ✔ deletes the token (209ms)
+      ✔ gas (212ms)
+    #transferFrom
+      ✔ can only be called by authorized or owner (44ms)
+      ✔ changes the owner (63ms)
+      ✔ removes existing approval (140ms)
+      ✔ gas (68ms)
+      ✔ gas comes from approved (105ms)
+    #permit
+      - emits an event
+      owned by eoa
+        ✔ changes the operator of the position and increments the nonce (72ms)
+        ✔ cannot be called twice with the same signature (100ms)
+        ✔ fails with invalid signature (39ms)
+        ✔ fails with signature not from owner (47ms)
+        ✔ fails with expired signature (96ms)
+        ✔ gas (57ms)
+      owned by verifying contract
+        ✔ changes the operator of the position and increments the nonce (119ms)
+        ✔ fails if owner contract is owned by different address (92ms)
+        ✔ fails with signature not from owner (92ms)
+        ✔ fails with expired signature (145ms)
+        ✔ gas (112ms)
+    multicall exit
+      ✔ executes all the actions (88ms)
+      ✔ gas (79ms)
+    #tokenURI
+      ✔ reverts for invalid token id
+      ✔ returns a data URI with correct mime type (50ms)
+      ✔ content is valid JSON and structure (54ms)
+    fees accounting
+      10k of token0 fees collect
+        ✔ expected amounts
+        ✔ actually collected (125ms)
+    #positions
+      ✔ gas (231ms)
+
+  NonfungibleTokenPositionDescriptor
+    #tokenRatioPriority
+      ✔ returns -100 for WETH9
+      ✔ returns 200 for USDC
+      ✔ returns 100 for DAI
+      ✔ returns  150 for USDT
+      ✔ returns -200 for TBTC
+      ✔ returns -250 for WBTC
+      ✔ returns 0 for any non-ratioPriority token
+    #flipRatio
+      ✔ returns false if neither token has priority ordering
+      ✔ returns true if both tokens are numerators but token0 has a higher priority ordering
+      ✔ returns true if both tokens are denominators but token1 has lower priority ordering
+      ✔ returns true if token0 is a numerator and token1 is a denominator
+      ✔ returns false if token1 is a numerator and token0 is a denominator
+    #tokenURI
+      ✔ displays ETH as token symbol for WETH token (317ms)
+      ✔ displays returned token symbols when neither token is WETH  (313ms)
+      ✔ can render a different label for native currencies (394ms)
+
+  OracleLibrary
+    #consult
+      ✔ reverts when period is 0
+      ✔ correct output when tick is 0 (63ms)
+      ✔ correct rounding for .5 negative tick (71ms)
+      ✔ correct output for liquidity overflow (56ms)
+    #getQuoteAtTick
+      ✔ token0: returns correct value when tick = 0
+      ✔ token1: returns correct value when tick = 0
+      ✔ token0: returns correct value when at min tick | 0 < sqrtRatioX96 <= type(uint128).max
+      ✔ token1: returns correct value when at min tick | 0 < sqrtRatioX96 <= type(uint128).max
+      ✔ token0: returns correct value when at max tick | sqrtRatioX96 > type(uint128).max
+      ✔ token1: returns correct value when at max tick | sqrtRatioX96 > type(uint128).max
+      ✔ gas test
+    #getOldestObservationSecondsAgo
+      ✔ fetches the oldest timestamp from the slot after observationIndex (56ms)
+      ✔ loops to fetches the oldest timestamp from index 0 (54ms)
+      ✔ fetches from index 0 if the next index is uninitialized (52ms)
+      ✔ reverts if the pool is not initialized (58ms)
+      ✔ fetches the correct timestamp when the timestamps overflow (55ms)
+    #getBlockStartingTickAndLiquidity
+      ✔ reverts if the pool is not initialized (61ms)
+      ✔ returns the tick and liquidity in storage if the latest observation was in a previous block (57ms)
+      ✔ reverts if it needs 2 observations and doesnt have them (55ms)
+      ✔ reverts if the prior observation needed is not initialized (53ms)
+      ✔ calculates the prior tick and liquidity from the prior observations (55ms)
+    #getWeightedArithmeticMeanTick
+      ✔ single observation returns average tick
+      ✔ multiple observations with same weight result in average across tiers
+      ✔ multiple observations with different weights are weighted correctly
+      ✔ correct rounding for .5 negative tick
+
+  PairFlash test
+    flash
+      ✔ test correct transfer events (141ms)
+      ✔ gas (117ms)
+
+  Path
+    ✔ js encoding works as expected
+    ✔ js decoding works as expected
+    ✔ gas cost
+    #hasMultiplePools / #decodeFirstPool / #skipToken / #getFirstPool
+      ✔ works on first pool
+      ✔ skips 1 item
+
+  PeripheryImmutableState
+    ✔ bytecode size
+    #WETH9
+      ✔ points to WETH9
+    #factory
+      ✔ points to v3 core factory
+
+  PoolAddress
+    #POOL_INIT_CODE_HASH
+      ✔ equals the hash of the pool bytecode
+    #computeAddress
+      ✔ all arguments equal zero
+      ✔ matches example from core repo
+      ✔ token argument order cannot be in reverse
+      ✔ gas cost
+
+  PoolTicksCounter
+    [Tick Spacing: 200]: tick after is bigger
+      ✔ same tick initialized (54ms)
+      ✔ same tick not-initialized (51ms)
+      ✔ same page (66ms)
+      ✔ multiple pages (82ms)
+      ✔ counts all ticks in a page except ending tick (82ms)
+      ✔ counts ticks to left of start and right of end on same page (42ms)
+      ✔ counts ticks to left of start and right of end across on multiple pages (79ms)
+      ✔ counts ticks when before and after are initialized on same page (47ms)
+      ✔ counts ticks when before and after are initialized on multiple page (94ms)
+      ✔ counts ticks with lots of pages (223ms)
+    [Tick Spacing: 200]: tick after is smaller
+      ✔ same page (68ms)
+      ✔ multiple pages (97ms)
+      ✔ counts all ticks in a page (107ms)
+      ✔ counts ticks to right of start and left of end on same page (60ms)
+      ✔ counts ticks to right of start and left of end on multiple pages (91ms)
+      ✔ counts ticks when before and after are initialized on same page (56ms)
+      ✔ counts ticks when before and after are initialized on multiple page (99ms)
+      ✔ counts ticks with lots of pages (235ms)
+    [Tick Spacing: 60]: tick after is bigger
+      ✔ same tick initialized (57ms)
+      ✔ same tick not-initialized (40ms)
+      ✔ same page (60ms)
+      ✔ multiple pages (88ms)
+      ✔ counts all ticks in a page except ending tick (96ms)
+      ✔ counts ticks to left of start and right of end on same page (45ms)
+      ✔ counts ticks to left of start and right of end across on multiple pages (82ms)
+      ✔ counts ticks when before and after are initialized on same page (49ms)
+      ✔ counts ticks when before and after are initialized on multiple page (97ms)
+      ✔ counts ticks with lots of pages (222ms)
+    [Tick Spacing: 60]: tick after is smaller
+      ✔ same page (48ms)
+      ✔ multiple pages (98ms)
+      ✔ counts all ticks in a page (98ms)
+      ✔ counts ticks to right of start and left of end on same page (44ms)
+      ✔ counts ticks to right of start and left of end on multiple pages (109ms)
+      ✔ counts ticks when before and after are initialized on same page (56ms)
+      ✔ counts ticks when before and after are initialized on multiple page (114ms)
+      ✔ counts ticks with lots of pages (243ms)
+    [Tick Spacing: 10]: tick after is bigger
+      ✔ same tick initialized (62ms)
+      ✔ same tick not-initialized (45ms)
+      ✔ same page (52ms)
+      ✔ multiple pages (96ms)
+      ✔ counts all ticks in a page except ending tick (98ms)
+      ✔ counts ticks to left of start and right of end on same page (51ms)
+      ✔ counts ticks to left of start and right of end across on multiple pages (102ms)
+      ✔ counts ticks when before and after are initialized on same page (62ms)
+      ✔ counts ticks when before and after are initialized on multiple page (112ms)
+      ✔ counts ticks with lots of pages (235ms)
+    [Tick Spacing: 10]: tick after is smaller
+      ✔ same page (52ms)
+      ✔ multiple pages (98ms)
+      ✔ counts all ticks in a page (100ms)
+      ✔ counts ticks to right of start and left of end on same page (50ms)
+      ✔ counts ticks to right of start and left of end on multiple pages (96ms)
+      ✔ counts ticks when before and after are initialized on same page (59ms)
+      ✔ counts ticks when before and after are initialized on multiple page (96ms)
+      ✔ counts ticks with lots of pages (262ms)
+
+  PositionValue
+    #total
+      ✔ returns the correct amount
+      ✔ gas
+    #principal
+      ✔ returns the correct values when price is in the middle of the range (92ms)
+      ✔ returns the correct values when range is below current price (83ms)
+      ✔ returns the correct values when range is below current price (82ms)
+      ✔ returns the correct values when range is skewed above price (89ms)
+      ✔ returns the correct values when range is skewed below price (87ms)
+      ✔ gas (86ms)
+    #fees
+      when price is within the position range
+        ✔ return the correct amount of fees
+        ✔ returns the correct amount of fees if tokensOwed fields are greater than 0 (254ms)
+        ✔ gas
+      when price is below the position range
+        ✔ returns the correct amount of fees
+        ✔ gas
+      when price is above the position range
+        ✔ returns the correct amount of fees
+        ✔ gas
+
+  Quoter
+    quotes
+      #quoteExactInput
+        ✔ 0 -> 1
+        ✔ 1 -> 0
+        ✔ 0 -> 1 -> 2
+        ✔ 2 -> 1 -> 0
+      #quoteExactInputSingle
+        ✔ 0 -> 1
+        ✔ 1 -> 0
+      #quoteExactOutput
+        ✔ 0 -> 1
+        ✔ 1 -> 0
+        ✔ 0 -> 1 -> 2
+        ✔ 2 -> 1 -> 0
+      #quoteExactOutputSingle
+        ✔ 0 -> 1
+        ✔ 1 -> 0
+
+  QuoterV2
+    quotes
+      #quoteExactInput
+        ✔ 0 -> 2 cross 2 tick
+        ✔ 0 -> 2 cross 2 tick where after is initialized
+        ✔ 0 -> 2 cross 1 tick
+        ✔ 0 -> 2 cross 0 tick, starting tick not initialized
+        ✔ 0 -> 2 cross 0 tick, starting tick initialized (319ms)
+        ✔ 2 -> 0 cross 2
+        ✔ 2 -> 0 cross 2 where tick after is initialized
+        ✔ 2 -> 0 cross 0 tick, starting tick initialized (339ms)
+        ✔ 2 -> 0 cross 0 tick, starting tick not initialized
+        ✔ 2 -> 1
+        ✔ 0 -> 2 -> 1
+      #quoteExactInputSingle
+        ✔ 0 -> 2
+        ✔ 2 -> 0
+      #quoteExactOutput
+        ✔ 0 -> 2 cross 2 tick
+        ✔ 0 -> 2 cross 2 where tick after is initialized
+        ✔ 0 -> 2 cross 1 tick
+        ✔ 0 -> 2 cross 0 tick starting tick initialized (283ms)
+        ✔ 0 -> 2 cross 0 tick starting tick not initialized
+        ✔ 2 -> 0 cross 2 ticks
+        ✔ 2 -> 0 cross 2 where tick after is initialized
+        ✔ 2 -> 0 cross 1 tick
+        ✔ 2 -> 1
+        ✔ 0 -> 2 -> 1
+      #quoteExactOutputSingle
+        ✔ 0 -> 1
+        ✔ 1 -> 0
+
+  SelfPermit
+    ✔ #permit (56ms)
+    #selfPermit
+      ✔ works (60ms)
+      ✔ fails if permit is submitted externally (134ms)
+    #selfPermitIfNecessary
+      ✔ works (72ms)
+      ✔ does not fail if permit is submitted externally (115ms)
+    #selfPermitAllowed
+      ✔ works (56ms)
+      ✔ fails if permit is submitted externally (109ms)
+    #selfPermitAllowedIfNecessary
+      ✔ works (70ms)
+      ✔ skips if already max approved (134ms)
+      ✔ does not fail if permit is submitted externally (129ms)
+
+  SwapRouter gas tests
+    #exactInput
+      ✔ 0 -> 1 (67ms)
+      ✔ 0 -> 1 minimal (252ms)
+      ✔ 0 -> 1 -> 2 (86ms)
+      ✔ WETH9 -> 0 (74ms)
+      ✔ 0 -> WETH9 (76ms)
+    #exactInputSingle
+      ✔ 0 -> 1 (73ms)
+      ✔ WETH9 -> 0 (86ms)
+      ✔ 0 -> WETH9 (85ms)
+    #exactOutput
+      ✔ 0 -> 1 (77ms)
+      ✔ 0 -> 1 -> 2 (84ms)
+      ✔ WETH9 -> 0 (96ms)
+      ✔ 0 -> WETH9 (88ms)
+    #exactOutputSingle
+      ✔ 0 -> 1 (70ms)
+      ✔ WETH9 -> 0 (90ms)
+      ✔ 0 -> WETH9 (97ms)
+
+  SwapRouter
+    ✔ bytecode size
+    swaps
+      #exactInput
+        single-pool
+          ✔ 0 -> 1 (179ms)
+          ✔ 1 -> 0 (164ms)
+        multi-pool
+          ✔ 0 -> 1 -> 2 (182ms)
+          ✔ 2 -> 1 -> 0 (276ms)
+          ✔ events (174ms)
+        ETH input
+          WETH9
+            ✔ WETH9 -> 0 (190ms)
+            ✔ WETH9 -> 0 -> 1 (187ms)
+        ETH output
+          WETH9
+            ✔ 0 -> WETH9 (182ms)
+            ✔ 0 -> 1 -> WETH9 (184ms)
+      #exactInputSingle
+        ✔ 0 -> 1 (149ms)
+        ✔ 1 -> 0 (150ms)
+        ETH input
+          WETH9
+            ✔ WETH9 -> 0 (172ms)
+        ETH output
+          WETH9
+            ✔ 0 -> WETH9 (170ms)
+      #exactOutput
+        single-pool
+          ✔ 0 -> 1 (162ms)
+          ✔ 1 -> 0 (167ms)
+        multi-pool
+          ✔ 0 -> 1 -> 2 (183ms)
+          ✔ 2 -> 1 -> 0 (162ms)
+          ✔ events (169ms)
+        ETH input
+          WETH9
+            ✔ WETH9 -> 0 (162ms)
+            ✔ WETH9 -> 0 -> 1 (203ms)
+        ETH output
+          WETH9
+            ✔ 0 -> WETH9 (167ms)
+            ✔ 0 -> 1 -> WETH9 (163ms)
+      #exactOutputSingle
+        ✔ 0 -> 1 (162ms)
+        ✔ 1 -> 0 (158ms)
+        ETH input
+          WETH9
+            ✔ WETH9 -> 0 (153ms)
+        ETH output
+          WETH9
+            ✔ 0 -> WETH9 (174ms)
+      *WithFee
+        ✔ #sweepTokenWithFee (91ms)
+        ✔ #unwrapWETH9WithFee (395ms)
+
+  TickLens
+    #getPopulatedTicksInWord
+      ✔ works for min/max
+      ✔ works for min/max and -2/-1/0/1 (603ms)
+      ✔ gas for single populated tick
+      ✔ fully populated ticks (11703ms)
+
+  V3Migrator
+    #migrate
+      ✔ fails if v3 pool is not initialized (106ms)
+      ✔ works once v3 pool is initialized (260ms)
+      ✔ works for partial (281ms)
+      ✔ double the price (287ms)
+      ✔ half the price (279ms)
+      ✔ double the price - as ETH (231ms)
+      ✔ half the price - as ETH (314ms)
+      ✔ gas (235ms)
+
+  #formatSqrtRatioX96
+    ✔ is correct for 9_999_999/10_000_000
+    ✔ is correct for 9_999_999/1
+    ✔ is correct for 1/3
+    ✔ is correct for 100/3
+    ✔ is correct for 1_000_000/3
+    ✔ 1e-18 still prints 5 sig figs
+    ✔ accounts for decimal differences
+    ✔ accounts for decimal differences in reverse
+
+
+Snapshot Summary
+ › 105 snapshots written from 16 test suites.
+
+  437 passing (8m)
+  8 pending
+
+Done in 480.78s.

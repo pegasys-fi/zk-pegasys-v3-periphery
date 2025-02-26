@@ -6,9 +6,9 @@ import {
   PositionValueTest,
   SwapRouter,
   MockTimeNonfungiblePositionManager,
-  IUniswapV3Pool,
+  IPegasysV3Pool,
   TestERC20,
-  IUniswapV3Factory,
+  IPegasysV3Factory,
 } from '../typechain'
 import { FeeAmount, MaxUint128, TICK_SPACINGS } from './shared/constants'
 import { getMaxTick, getMinTick } from './shared/ticks'
@@ -21,7 +21,7 @@ import snapshotGasCost from './shared/snapshotGasCost'
 
 import { expect } from './shared/expect'
 
-import { abi as IUniswapV3PoolABI } from '@uniswap/v3-core/artifacts-zk/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
+import { abi as IPegasysV3PoolABI } from '@pegasys/v3-core/artifacts-zk/contracts/interfaces/IPegasysV3Pool.sol/IPegasysV3Pool.json'
 
 import { deployContract, getWallets } from './shared/zkSyncUtils'
 import { Wallet } from 'zksync-web3'
@@ -33,7 +33,7 @@ describe('PositionValue', async () => {
     tokens: [TestERC20, TestERC20, TestERC20]
     nft: MockTimeNonfungiblePositionManager
     router: SwapRouter
-    factory: IUniswapV3Factory
+    factory: IPegasysV3Factory
   }> {
     const { nft, router, tokens, factory } = await completeFixture([wallet])
     const positionValue = (await deployContract(wallet, 'PositionValueTest')) as PositionValueTest
@@ -58,7 +58,7 @@ describe('PositionValue', async () => {
   let positionValue: PositionValueTest
   let nft: MockTimeNonfungiblePositionManager
   let router: SwapRouter
-  let factory: IUniswapV3Factory
+  let factory: IPegasysV3Factory
 
   let amountDesired: BigNumberish
 
@@ -74,7 +74,7 @@ describe('PositionValue', async () => {
     ).wait()
 
     const poolAddress = computePoolAddress(factory.address, [tokens[0].address, tokens[1].address], FeeAmount.MEDIUM)
-    pool = new Contract(poolAddress, IUniswapV3PoolABI, wallets[0] as any)
+    pool = new Contract(poolAddress, IPegasysV3PoolABI, wallets[0] as any)
   })
 
   describe('#total', () => {

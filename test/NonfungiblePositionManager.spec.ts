@@ -6,7 +6,7 @@ import {
   MockTimeNonfungiblePositionManager,
   TestERC20,
   IWETH9,
-  IUniswapV3Factory,
+  IPegasysV3Factory,
   SwapRouter,
   NonfungiblePositionManagerPositionsGasTest,
 } from '../typechain'
@@ -24,7 +24,7 @@ import { expandTo18Decimals } from './shared/expandTo18Decimals'
 import { sortedTokens } from './shared/tokenSort'
 import { extractJSONFromURI } from './shared/extractJSONFromURI'
 
-import { abi as IUniswapV3PoolABI } from '@uniswap/v3-core/artifacts-zk/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
+import { abi as IPegasysV3PoolABI } from '@pegasys/v3-core/artifacts-zk/contracts/interfaces/IPegasysV3Pool.sol/IPegasysV3Pool.json'
 
 import { getWallets, deployContract } from './shared/zkSyncUtils'
 
@@ -34,7 +34,7 @@ describe('NonfungiblePositionManager', () => {
 
   async function nftFixture([wallet]: Wallet[]): Promise<{
     nft: MockTimeNonfungiblePositionManager
-    factory: IUniswapV3Factory
+    factory: IPegasysV3Factory
     tokens: [TestERC20, TestERC20, TestERC20]
     weth9: IWETH9
     router: SwapRouter
@@ -57,7 +57,7 @@ describe('NonfungiblePositionManager', () => {
     }
   }
 
-  let factory: IUniswapV3Factory
+  let factory: IPegasysV3Factory
   let nft: MockTimeNonfungiblePositionManager
   let tokens: [TestERC20, TestERC20, TestERC20]
   let weth9: IWETH9
@@ -135,7 +135,7 @@ describe('NonfungiblePositionManager', () => {
         FeeAmount.MEDIUM
       )
       await (await factory.createPool(tokens[0].address, tokens[1].address, FeeAmount.MEDIUM)).wait()
-      const pool = new Contract(expectedAddress, IUniswapV3PoolABI, wallet as any)
+      const pool = new Contract(expectedAddress, IPegasysV3PoolABI, wallet as any)
 
       await (await pool.initialize(encodePriceSqrt(3, 1))).wait()
       const code = await wallet.provider.getCode(expectedAddress)

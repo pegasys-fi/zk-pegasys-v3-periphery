@@ -1,9 +1,9 @@
-import * as FACTORY_V2_ARTIFACT from '@uniswap/v2-core/artifacts-zk/contracts/UniswapV2Factory.sol/UniswapV2Factory.json'
-import * as PAIR_V2_ARTIFACT from '@uniswap/v2-core/artifacts-zk/contracts/UniswapV2Pair.sol/UniswapV2Pair.json'
-import * as FACTORY_ARTIFACT from '@uniswap/v3-core/artifacts-zk/contracts/UniswapV3Factory.sol/UniswapV3Factory.json'
-import * as POOL_ARTIFACT from '@uniswap/v3-core/artifacts-zk/contracts/UniswapV3Pool.sol/UniswapV3Pool.json'
+import * as FACTORY_V2_ARTIFACT from '@pegasys/v2-core/artifacts-zk/contracts/PegasysV2Factory.sol/PegasysV2Factory.json'
+import * as PAIR_V2_ARTIFACT from '@pegasys/v2-core/artifacts-zk/contracts/PegasysV2Pair.sol/PegasysV2Pair.json'
+import * as FACTORY_ARTIFACT from '@pegasys/v3-core/artifacts-zk/contracts/PegasysV3Factory.sol/PegasysV3Factory.json'
+import * as POOL_ARTIFACT from '@pegasys/v3-core/artifacts-zk/contracts/PegasysV3Pool.sol/PegasysV3Pool.json'
 import { ethers } from 'hardhat'
-import { IUniswapV3Factory, IWETH9, MockTimeSwapRouter } from '../../typechain'
+import { IPegasysV3Factory, IWETH9, MockTimeSwapRouter } from '../../typechain'
 import WETH9 from '../contracts/WETH9.json'
 import { constants } from 'ethers'
 import { ZkSyncArtifact } from '@matterlabs/hardhat-zksync-deploy/dist/types'
@@ -32,7 +32,7 @@ export async function v2FactoryFixture([wallet]: Wallet[]): Promise<{ factory: C
   return { factory }
 }
 
-async function v3CoreFactoryFixture([wallet]: Wallet[]): Promise<IUniswapV3Factory> {
+async function v3CoreFactoryFixture([wallet]: Wallet[]): Promise<IPegasysV3Factory> {
   const contractFactory = new ContractFactory(FACTORY_ARTIFACT.abi, FACTORY_ARTIFACT.bytecode, wallet)
 
   let factoryDeps: string[] = extractFactoryDeps((FACTORY_ARTIFACT as any) as ZkSyncArtifact, [
@@ -44,12 +44,12 @@ async function v3CoreFactoryFixture([wallet]: Wallet[]): Promise<IUniswapV3Facto
     },
   })
 
-  return factory as IUniswapV3Factory
+  return factory as IPegasysV3Factory
 }
 
 export async function v3RouterFixture([wallet]: Wallet[]): Promise<{
   weth9: IWETH9
-  factory: IUniswapV3Factory
+  factory: IPegasysV3Factory
   router: MockTimeSwapRouter
 }> {
   const { weth9 } = await wethFixture([wallet])

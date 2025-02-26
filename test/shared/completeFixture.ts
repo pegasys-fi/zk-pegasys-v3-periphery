@@ -5,7 +5,7 @@ import {
   MockTimeNonfungiblePositionManager,
   MockTimeSwapRouter,
   TestERC20,
-  IUniswapV3Factory,
+  IPegasysV3Factory,
 } from '../../typechain'
 import { Wallet, Contract } from 'zksync-web3'
 import { deployContract } from './zkSyncUtils'
@@ -14,7 +14,7 @@ export let nftDescriptorLibrary: Contract | undefined
 
 async function completeFixture([wallet]: Wallet[]): Promise<{
   weth9: IWETH9
-  factory: IUniswapV3Factory
+  factory: IPegasysV3Factory
   router: MockTimeSwapRouter
   nft: MockTimeNonfungiblePositionManager
   nftDescriptor: Contract

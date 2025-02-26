@@ -40,7 +40,7 @@ describe('CallbackValidation', () => {
     ;({ callbackValidation, tokens, factory } = await callbackValidationFixture(wallets))
   })
 
-  it('reverts when called from an address other than the associated UniswapV3Pool', async () => {
+  it('reverts when called from an address other than the associated PegasysV3Pool', async () => {
     expect(
       (callbackValidation as any)
         .connect(nonpairAddr)

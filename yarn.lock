@@ -1173,6 +1173,14 @@
   version "3.4.1-solc-0.7-2"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.4.1-solc-0.7-2.tgz#371c67ebffe50f551c3146a9eec5fe6ffe862e92"
 
+"@pegasys/v2-core@https://github.com/pegasys-fi/zk-pegasys-v2-core.git#v1.0.1-zksync-era":
+  version "1.0.1"
+  resolved "https://github.com/pegasys-fi/zk-pegasys-v2-core.git#df60c5f206464638b61679530d56a3a5b8b5c52f"
+
+"@pegasys/v3-core@https://github.com/pegasys-fi/zk-pegasys-v3-core.git#v1.0.0-zksync-era":
+  version "1.0.0"
+  resolved "https://github.com/pegasys-fi/zk-pegasys-v3-core.git#47907552b724c68090c155a80cf0d8916f2a5a34"
+
 "@resolver-engine/core@^0.3.3":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@resolver-engine/core/-/core-0.3.3.tgz#590f77d85d45bc7ecc4e06c654f41345db6ca967"
@@ -1465,14 +1473,6 @@
 "@uniswap/lib@^4.0.1-alpha":
   version "4.0.1-alpha"
   resolved "https://registry.yarnpkg.com/@uniswap/lib/-/lib-4.0.1-alpha.tgz#2881008e55f075344675b3bca93f020b028fbd02"
-
-"@uniswap/v2-core@https://github.com/uniswap-zksync/era-uniswap-v2-core.git#v1.0.1-zksync-era":
-  version "1.0.1"
-  resolved "https://github.com/uniswap-zksync/era-uniswap-v2-core.git#052cc8b612b49fed4fb388586b63eaed2b80d936"
-
-"@uniswap/v3-core@https://github.com/uniswap-zksync/era-uniswap-v3-core.git#v1.0.0-zksync-era":
-  version "1.0.0"
-  resolved "https://github.com/uniswap-zksync/era-uniswap-v3-core.git#9ba7b052ab83b6a2a7120eeff04e6efe050e881d"
 
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
