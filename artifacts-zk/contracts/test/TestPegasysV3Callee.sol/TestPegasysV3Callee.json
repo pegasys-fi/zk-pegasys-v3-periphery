@@ -1,7 +1,7 @@
 {
   "_format": "hh-zksolc-artifact-1",
   "contractName": "TestPegasysV3Callee",
-  "sourceName": "contracts/test/TestUniswapV3Callee.sol",
+  "sourceName": "contracts/test/TestPegasysV3Callee.sol",
   "abi": [
     {
       "inputs": [

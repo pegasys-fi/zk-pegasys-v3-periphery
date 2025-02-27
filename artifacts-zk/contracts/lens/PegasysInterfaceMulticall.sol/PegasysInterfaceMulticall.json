@@ -1,7 +1,7 @@
 {
   "_format": "hh-zksolc-artifact-1",
   "contractName": "PegasysInterfaceMulticall",
-  "sourceName": "contracts/lens/UniswapInterfaceMulticall.sol",
+  "sourceName": "contracts/lens/PegasysInterfaceMulticall.sol",
   "abi": [
     {
       "inputs": [],
